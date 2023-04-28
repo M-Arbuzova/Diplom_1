@@ -4,10 +4,9 @@ import org.junit.Test;
 import praktikum.Bun;
 
 public class BunTest {
-    private Bun bun;
     private final String errorName = "Ошибка! Выбрана несуществующая модель булочки";
     private final String errorPrice = "Ошибка! Указана неверная цена на выбранную модель булочки";
-
+    private Bun bun;
 
     @Before
     public void setUp() {

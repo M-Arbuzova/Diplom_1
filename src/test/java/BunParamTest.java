@@ -2,7 +2,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import praktikum.Bun;
-import praktikum.IngredientType;
 
 import static org.junit.Assert.assertEquals;
 
@@ -45,6 +44,6 @@ public class BunParamTest {
     @Test
     public void getPriceTest() {
         Bun bun = new Bun(nameBun, priceBun);
-        assertEquals(priceBun, bun.getPrice(),0);
+        assertEquals(priceBun, bun.getPrice(), 0);
     }
 }
