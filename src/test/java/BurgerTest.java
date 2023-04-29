@@ -1,3 +1,4 @@
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
@@ -13,15 +14,17 @@ import static org.junit.Assert.*;
 @RunWith(MockitoJUnitRunner.class)
 public class BurgerTest {
     Burger burger;
+    Ingredient ingredient;
     @Mock
     Bun bun;
-    @Mock
-    Ingredient ingredient;
 
+    @Before
+    public void setUp() {
+        burger = new Burger();
+    }
 
     @Test
     public void setBunsTest() {
-        burger = new Burger();
         burger.setBuns(bun);
         Bun actual = burger.bun;
         assertEquals("Ошибка! Булочка должна быть выбрана", bun, actual);
@@ -29,14 +32,12 @@ public class BurgerTest {
 
     @Test
     public void addIngredientTest() {
-        burger = new Burger();
         burger.addIngredient(ingredient);
-        assertTrue(burger.ingredients.size() != 0);
+        assertTrue("Ошибка! Должны быть добавлены ингредиенты", burger.ingredients.size() != 0);
     }
 
     @Test
     public void removeIngredientTest() {
-        burger = new Burger();
         Ingredient ingredient0 = new Ingredient(IngredientType.SAUCE, "Сырный", 100);
         Ingredient ingredient1 = new Ingredient(IngredientType.SAUCE, "Чесночный", 100);
         burger.addIngredient(ingredient0);
@@ -44,12 +45,10 @@ public class BurgerTest {
         assertEquals("Ошибка! Ожидается, что добавлено 2 ингредиента", 2, burger.ingredients.size());
         burger.removeIngredient(0);
         assertFalse("Ошибка! Ожидается, что ингредиент с индексом 0 должен быть удален", burger.ingredients.contains(ingredient0));
-
     }
 
     @Test
     public void moveIngredientTest() {
-        burger = new Burger();
         Ingredient ingredient0 = new Ingredient(IngredientType.SAUCE, "Сырный", 100);
         Ingredient ingredient1 = new Ingredient(IngredientType.SAUCE, "Чесночный", 100);
         burger.addIngredient(ingredient0);
@@ -61,7 +60,6 @@ public class BurgerTest {
 
     @Test
     public void getPriceTest() {
-        burger = new Burger();
         Mockito.when(bun.getPrice()).thenReturn(50F);
         burger.setBuns(bun);
         Ingredient ingredient0 = new Ingredient(IngredientType.SAUCE, "Сырный", 100);
@@ -74,8 +72,8 @@ public class BurgerTest {
 
     @Test
     public void getReceiptTest() {
-        burger = new Burger();
-        Bun bun = new Bun("Белый хлеб", 50);
+        Mockito.when(bun.getPrice()).thenReturn(50F);
+        Mockito.when(bun.getName()).thenReturn("Белый хлеб");
         burger.setBuns(bun);
         Ingredient ingredient0 = new Ingredient(IngredientType.SAUCE, "Сырный", 100);
         Ingredient ingredient1 = new Ingredient(IngredientType.FILLING, "Салат", 200);

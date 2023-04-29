@@ -10,7 +10,7 @@ public class IngredientTest {
 
     @Test
     public void getPriceTest() {
-        ingredient = new Ingredient(SAUCE, "Терияки", 11.223F);
+        ingredient = new Ingredient(SAUCE, "Терияки", 11.255F);
         assertEquals("Ошибка! Текущая цена отличается от ожидаемой", ingredient.price, ingredient.getPrice(), 0);
     }
 
