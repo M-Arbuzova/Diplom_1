@@ -6,11 +6,11 @@ import praktikum.IngredientType;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(Parameterized.class)
-public class IngredientTypeTest {
+public class IngredientTypeParamTest {
     private final IngredientType ingredientType;
     private final String nameIngregientType;
 
-    public IngredientTypeTest(IngredientType ingredientType, String nameIngregientType) {
+    public IngredientTypeParamTest(IngredientType ingredientType, String nameIngregientType) {
         this.ingredientType = ingredientType;
         this.nameIngregientType = nameIngregientType;
     }
